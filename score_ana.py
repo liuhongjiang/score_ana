@@ -10,10 +10,15 @@ class Student(object):
         for i in range(len(head)):
             self.__dict__[head[i]] = value[i]
 
-    def __repr__(self):
-        print 'here-------'
+    def __unicode__(self):
+        # print 'here-------'
+        return_name = ""
         for key in self.__dict__.keys():
-            print key, self.__dict__[key]
+            return_name += key + ':' + self.__dict__[key] + ', '
+        return return_name
+
+    def __str__(self):
+        return self.__unicode__()
 
 
 def load_score_file():
@@ -23,7 +28,7 @@ def load_score_file():
     for line in score_file.readlines():
         print line
         stu = Student(first_line.split(), line.split())
-        print stu
+        print unicode(stu)
         # words = line.split()
         # for word in words:
         #     print word
